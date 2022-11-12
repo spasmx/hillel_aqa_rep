@@ -7,4 +7,4 @@ else:
         digit = number % 10
         reversed_number = reversed_number * 10 + digit
         number //= 10
-print(type(reversed_number))
+print(reversed_number)
