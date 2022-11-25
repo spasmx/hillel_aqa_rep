@@ -1,5 +1,12 @@
-while (width := int(input('Enter the width to create the triangle: '))) and width < 2:
-    print('Enter a number greater than one')
+while width := input('enter the width of the triangle: '):
+    if not width.isdigit():
+        print('enter a valid num')
+        continue
+    if int(width) < 2:
+        print('enter num greater one')
+    else:
+        width = int(width)
+        break
 
 star = '*'
 
@@ -24,6 +31,7 @@ for i in range(width + 1):
     triangle = star * i
     print(' ' * count2 + triangle)
     count2 -= 1
+
 
 
 
