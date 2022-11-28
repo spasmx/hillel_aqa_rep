@@ -1,4 +1,12 @@
-width = int(input('enter the width of the triangle: '))
+while width := input('enter the width of the triangle: '):
+    if not width.isdigit():
+        print('enter a valid num')
+        continue
+    if int(width) < 2:
+        print('enter num greater one')
+    else:
+        width = int(width)
+        break
 
 star = '*'
 
