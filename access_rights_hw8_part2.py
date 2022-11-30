@@ -9,6 +9,7 @@
 # the number m is the number of requests to files;
 # m requests of the type "file operation".
 # For each valid request, the program should return OK, for invalid - Access denied.
+import datetime
 
 ACTIONS = {
     'write': 'W',
@@ -36,17 +37,18 @@ while count_operations := input('Enter count operations above files: '):
         count_operations = int(count_operations)
         break
 
-files_requests = ''
 for i in range(count_operations):
     operation = input('Enter operations and file name: ').split(' ')
     try:
         if ACTIONS[operation[0]] in files_operations[operation[1]]:
-            files_requests += 'OK\n'
+            print(f'File: {operation[1]}, Action: {operation[0]}, '
+                  f'Date: {datetime.datetime.now().strftime("%Y-%m-%d %X")}, Status: OK')
         else:
-            files_requests += 'Access denied\n'
+            print(f'File: {operation[1]}, Action: {operation[0]}, '
+                  f'Date: {datetime.datetime.now().strftime("%Y-%m-%d %X")}, Status: Access denied')
     except KeyError:
         print('FILE OR ACTION NOT FOUND')
 
-print(files_requests)
+
 
 
