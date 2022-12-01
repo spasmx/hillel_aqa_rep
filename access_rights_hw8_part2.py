@@ -1,3 +1,4 @@
+
 # Access rights
 # The virus damaged the system of file permissions. It is known that certain actions can be performed on each file:
 # entry - W;
@@ -24,10 +25,10 @@ while count_files := input('Enter count files: '):
         count_files = int(count_files)
         break
 
-files_operations = {}
+files_and_operations = {}
 for i in range(count_files):
     file_and_actions = input('Enter file name and actions that can be performed[W/R/X]: ').split(' ')
-    files_operations[file_and_actions[0]] = file_and_actions[1:]
+    files_and_operations[file_and_actions[0]] = file_and_actions[1:]
 
 
 while count_operations := input('Enter count operations above files: '):
@@ -38,17 +39,15 @@ while count_operations := input('Enter count operations above files: '):
         break
 
 for i in range(count_operations):
-    operation = input('Enter operations and file name: ').split(' ')
+    operation, file = input('Enter operations and file name: ').split(' ')
     try:
-        if ACTIONS[operation[0]] in files_operations[operation[1]]:
-            print(f'File: {operation[1]}, Action: {operation[0]}, '
+        if ACTIONS[operation] in files_and_operations[file]:
+            print(f'File: {file}, Action: {operation}, '
                   f'Date: {datetime.datetime.now().strftime("%Y-%m-%d %X")}, Status: OK')
         else:
-            print(f'File: {operation[1]}, Action: {operation[0]}, '
+            print(f'File: {file}, Action: {operation}, '
                   f'Date: {datetime.datetime.now().strftime("%Y-%m-%d %X")}, Status: Access denied')
     except KeyError:
         print('FILE OR ACTION NOT FOUND')
-
-
 
 
