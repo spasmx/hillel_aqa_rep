@@ -19,10 +19,12 @@ def change(lst):
 
 
 def to_dict(lst):
+    if not isinstance(lst, list):
+        return 'Object must be list'
     if len(lst) < 1:
         return 'list must be not empty'
 
-    return {elem: elem for elem in lst}
+    return {elem: elem for elem in lst if not isinstance(elem, (list, set, dict))}
 
 
 # Task3
