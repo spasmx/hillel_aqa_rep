@@ -11,6 +11,6 @@ def is_power_if_two(x, _count=1):
     if x == 1:
         return 'No'
 
-    return is_power_if_two(int(x/2), _count + 1) if x > 0 else 'Argument must be more than 0'
+    return is_power_if_two(int(x/2), _count + 1) if x > 0 else 'Argument must be greater than 0'
 
 
