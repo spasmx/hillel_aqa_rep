@@ -9,7 +9,7 @@
 
 class Human:
 
-    def __init__(self, name, surname, age, phone, address):
+    def __init__(self, name: str, surname: str, age: int, phone: str, address: str):
         self.name = name
         self.surname = surname
         self.age = age
@@ -27,7 +27,7 @@ class Human:
         return human_info
 
     def call(self, phone_number):
-        return f'{self.phone} calling {phone_number}'
+        print(f'{self.phone} calling {phone_number}')
 
 
 info1 = Human('Bob', 'Dylan', 45, '+981234567890', 'Fulton St. 654')
