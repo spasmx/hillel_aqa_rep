@@ -36,3 +36,4 @@ info3 = Human('Mishel', 'Pfeiffer', 23, '+86783451242', 'St. Marks Pl. 1')
 print(info1.get_info())
 print(info2.get_info())
 print(info3.get_info())
+
