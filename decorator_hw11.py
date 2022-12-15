@@ -3,69 +3,32 @@
 # in the format f'{func_name} has been called {count} times.\n'
 
 
-func_call_times = {}
-count = 0
+func_name = {}
+call_func_counter = 0
+
 
 def call_times(file_name):
 
     def wrapper(func):
         def inner(*args, **kwargs):
-            global func_call_times
-            global count
+            global func_name
+            global call_func_counter
             func(*args, **kwargs)
-            if func.__name__ in func_call_times:
-                count += 1
+            if func.__name__ in func_name:
+                call_func_counter += 1
             else:
-                count = 1
-            func_call_times[func.__name__] = count
+                call_func_counter = 1
+            func_name[func.__name__] = [call_func_counter, file_name]
             with open(file_name, 'w+') as f:
                 func(*args, **kwargs)
-
-                f.write(f'{func.__name__} be called {count} times.\n')
+                for function, call in func_name.items():
+                    if file_name in call:
+                        f.write(f'{function} be called {call[0]} times.\n')
             return f'{file_name} was update'
 
         return inner
     return wrapper
 
-
-
-
-
-@call_times('foo.txt')
-def foo():
-    pass
-
-@call_times('foo.txt')
-def boo():
-    pass
-
-@call_times('calls.txt')
-def doo():
-    pass
-
-
-print(boo())
-print(boo())
-print(boo())
-print(doo())
-print(doo())
-print(doo())
-print(doo())
-print(doo())
-print(foo())
-print(foo())
-print(foo())
-print(foo())
-print(foo())
-print(foo())
-print(foo())
-print(foo())
-print(foo())
-print(foo())
-print(foo())
-
-
-print(func_call_times)
 
 
 
