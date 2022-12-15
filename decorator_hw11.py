@@ -19,7 +19,7 @@ def call_times(file_name):
             else:
                 call_func_counter = 1
             func_name[func.__name__] = [call_func_counter, file_name]
-            with open(file_name, 'w+') as f:
+            with open(file_name, 'w') as f:
                 func(*args, **kwargs)
                 for function, call in func_name.items():
                     if file_name in call:
@@ -28,6 +28,44 @@ def call_times(file_name):
 
         return inner
     return wrapper
+
+
+
+
+
+@call_times('foo.txt')
+def foo(txt):
+    return txt
+
+@call_times('foo.txt')
+def boo():
+    pass
+
+@call_times('calls.txt')
+def doo():
+    pass
+
+
+print(boo())
+print(boo())
+print(boo())
+print(boo())
+print(boo())
+print(doo())
+print(doo())
+print(doo())
+print(doo())
+print(doo())
+print(doo())
+print(doo())
+print(doo())
+print(doo())
+print(doo())
+print(doo())
+print(doo())
+print(foo('a'))
+
+print(func_name)
 
 
 
