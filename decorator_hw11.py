@@ -8,7 +8,6 @@ call_func_counter = 0
 
 
 def call_times(file_name):
-
     def wrapper(func):
         def inner(*args, **kwargs):
             global func_name
@@ -25,47 +24,8 @@ def call_times(file_name):
                     if file_name in call:
                         f.write(f'{function} be called {call[0]} times.\n')
             return f'{file_name} was update'
-
         return inner
     return wrapper
-
-
-
-
-
-@call_times('foo.txt')
-def foo(txt):
-    return txt
-
-@call_times('foo.txt')
-def boo():
-    pass
-
-@call_times('calls.txt')
-def doo():
-    pass
-
-
-print(boo())
-print(boo())
-print(boo())
-print(boo())
-print(boo())
-print(doo())
-print(doo())
-print(doo())
-print(doo())
-print(doo())
-print(doo())
-print(doo())
-print(doo())
-print(doo())
-print(doo())
-print(doo())
-print(doo())
-print(foo('a'))
-
-print(func_name)
 
 
 
