@@ -19,9 +19,12 @@ class Triangle(Shape):
     def __init__(self, width: int):
         self.width = width
 
-    def draw(self) -> None:
-        for _ in range(1, self.width):
-            print(_ * '*')
+    def draw(self) -> str:
+        for i in range(self.width):
+            for j in range(i + 1):
+                print('* ', end='')
+            print()
+        return f'Triangle was drawn with a width - {self.width}'
 
 
 class Rectangle(Shape):
@@ -30,14 +33,24 @@ class Rectangle(Shape):
         self.width = width
         self.height = height
 
-    def draw(self) -> None:
-        print(('*' * self.width + '\n') * self.height)
+    def draw(self) -> str:
+        for i in range(self.height):
+            for j in range(self.width):
+                print('* ', end='')
+            print()
+        return f'Rectangle was drawn with a width - {self.width} and a height - {self.height}'
 
 
-figures = [Rectangle(10, 10), Triangle(2)]
+figures = [
+    Triangle(7),
+    Rectangle(6, 10),
+]
 
-for i in figures:
-    print(i.draw())
+for figure in figures:
+    print(figure.draw())
+
+
+
 
 
 
