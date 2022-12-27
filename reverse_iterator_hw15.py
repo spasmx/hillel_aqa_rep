@@ -6,10 +6,10 @@ class ReverseIterator:
         self.data_list = data_list
         self._index = 0
 
-    def __iter__(self):
+    def __iter__(self) -> iter:
         return self
 
-    def __next__(self):
+    def __next__(self) -> str:
         if len(self.data_list) == 0:
             return 'Empty'
         if len(self.data_list) == 1:
@@ -23,7 +23,6 @@ class ReverseIterator:
             return elem
 
         raise StopIteration
-
 
 
 
